@@ -1,4 +1,4 @@
-#postsTable, tr, th, td {
+table, tr, th, td {
     border: 3px solid black;
     border-collapse: collapse;
     width: 900px;
