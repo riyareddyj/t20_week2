@@ -1,0 +1,13 @@
+#postsTable, tr, th, td {
+    border: 3px solid black;
+    border-collapse: collapse;
+    width: 900px;
+    margin-left: 450px;
+}
+#update {
+    width: 200px;
+    height: 40px;
+    background-color: aqua;
+    margin-left: 800px;
+    font-size: medium;
+}
