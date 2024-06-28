@@ -9,29 +9,37 @@
     <link rel="stylesheet" href="contact.css">
 </head>
 <body>
+    <script src="contact.js"></script>
+    <center><h5 id="thankstag"></h5></center>
+    <center><h5 id="nametag"></h5></center>
+    <center><h5 id="emailtag"></h5></center>
+    <center><h5 id="phnotag"></h5></center>
+    <center><h5 id="teamtag"></h5></center>
+
+
     <div id="contact-form" class="container mt-3">
         <center><h2 id="form-heading">Contact Us!</h2></center>
         <br>
-        <form action="/action_page.php">
+        <form>
             <!-- NAME -->
             <div class="mb-3 mt-3">
                 <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required>
             </div>
             <!-- EMAIL -->
             <div class="mb-3 mt-3">
                 <label for="email">Email:</label>
-                <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
             </div>
             <!-- PHNO -->
             <div class="mb-3">
                 <label for="phno">Phone Number:</label>
-                <input type="text" class="form-control" id="phno" placeholder="Enter phone number" name="phno">
+                <input type="number" class="form-control" id="phno" placeholder="Enter phone number" name="phno" required>
             </div>
             <!-- DROPDOWN -->
-            <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"> Team Name </button>
-                <ul class="dropdown-menu">
+            <div class="dropdown" required>
+                <button id="team" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" required> Team Name </button>
+                <ul class="dropdown-menu" required>
                     <li><a class="dropdown-item" href="#">India</a></li>
                     <li><a class="dropdown-item" href="#">Australia</a></li>
                     <li><a class="dropdown-item" href="#">Sri Lanka</a></li>
@@ -44,28 +52,30 @@
             </div>
             <br> 
             <!-- CHECKBOX -->
-            <p> Do you want whatsapp notification? </p>
-            <div class="form-check">
+            <p class="whatsapp"> Do you want whatsapp notification? </p>
+            <div class="form-check whatsapp">
                 <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something">
                 <label class="form-check-label" for="check1">Yes</label>
             </div>
-            <div class="form-check">
+            <div class="form-check whatsapp">
                 <input type="checkbox" class="form-check-input" id="check2" name="option2" value="something">
                 <label class="form-check-label" for="check2">No</label>
             </div>
             <br>
             <!-- RADIO -->
-            <p> Do you like T20? </p>
-            <div class="form-check">
+            <p class="t20"> Do you like T20? </p>
+            <div class="form-check t20">
                 <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1">Yes
                 <label class="form-check-label" for="radio1"></label>
             </div>
-             <div class="form-check">
+             <div class="form-check t20">
                 <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">No
                 <label class="form-check-label" for="radio2"></label>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button onclick="submitForm()">Submit</button>
+            <button type="reset">Reset</button>
+            <button onclick="del()">Delete</button>
         </form>
     </div>
 </body>

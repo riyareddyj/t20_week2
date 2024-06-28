@@ -52,3 +52,29 @@ fetch(url)
     }
 })
 .catch(error => console.error(error));
+
+// search fun
+function search() {
+    let input = document.getElementById("searchname").value;
+    input = input.toLowerCase();
+    let x = document.getElementsByTagName("td");
+
+    for (i = 0; i < x.length; i++) {
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display = "none";
+        }
+        else {
+            x[i].style.display = "block";
+        }
+    }
+}
+
+
+// function search() {
+//     let searchname = document.getElementById("searchname").value;
+//     let data = document.getElementsByTagName("td")
+//     if(data.value != searchname) {
+//         const parent = data.parentNode;
+//         parent.style.visibility = "hidden";
+//     }
+// }
