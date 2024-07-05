@@ -1,0 +1,12 @@
+# Write a method that sorts keys in a hash by length of key and return
+# the sorted hash.
+def sort_hash_keys(hash)
+  hashkeys_array = hash.keys.sort_by { |key| key.length }
+  sorted_hash = {}
+  hashkeys_array.each { |key| sorted_hash[key] = hash[key] }
+  sorted_hash
+end
+
+hash = { "massachusetts" => 'a', "texas" => 'b', "seattle" => 'c', "california" => 'd' }
+sorted_hash = sort_hash_keys(hash)
+puts sorted_hash
