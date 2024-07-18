@@ -1,4 +1,5 @@
 body {
+    position: relative;
     background-image: url(images/contact-bg.avif);
 }
 #contact-form {

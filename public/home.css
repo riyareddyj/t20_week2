@@ -1,6 +1,13 @@
+body {
+    background-image: url('bg.avif');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 450px;
+}
 .table {
     width: 60%;
-    margin: 100px 355px;
+    margin: 150px 355px;
 }
 th, td {
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -45,8 +52,8 @@ th, td {
         bottom: 50%;
     }
 }
-@media screen and (max-width: 700px) {
+/* @media screen and (max-width: 700px) {
     body {
         background-image: url(images/background.avif);
     }
-}
+} */

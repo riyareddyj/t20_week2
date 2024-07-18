@@ -36,4 +36,9 @@ p Player.group(:team_id).average(:age)
 
 puts "Get the count of players in each team including teams without any
 players."
-p Player.group(:team_id).select('count(id), team_id')
+player_count_in_team = Player.group(:team_id).select('count(id) as player_count, team_id')
+player_count_in_team.each do |team|
+    puts "#{team.team_id} : #{team.player_count}"
+end
+
+puts "Filter teams with more than a certain number of players."

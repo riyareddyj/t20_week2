@@ -1,7 +1,7 @@
 body {
     padding: 0px;
     margin: 0px;
-    background-image: url(images/teams-bg.avif);
+    background-image: url(images/bg.avif);
 }
 #teams-header  {
     background: linear-gradient(#e66465, #9198e5);
