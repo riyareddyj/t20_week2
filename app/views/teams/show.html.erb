@@ -1,0 +1,20 @@
+<h2 class="text-center mt-4"> <%= @team.name %> </h1>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-8 mt-4">
+      <div class="card text-center shadow mb-5 bg-white rounded">
+        <div class="card-header fst-italic">
+        <%= @team.name %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"> Country: <%= @team.country %> </h5>
+          <p class="card-text"> Founded in <%= @team.founded %> </p>
+          <p class="card-text"> <%= simple_format(@team.description) %> </p>
+          <%= link_to "View", team_path(@team), class: "btn btn-outline-success" %>
+          <%= link_to "Edit", edit_team_path(@team), class: "btn btn-outline-info" %>
+          <%= link_to "Delete", team_path(@team), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row justify-content-center"> 
+    <div lass="col-10">
+    <%= render 'error' %>
+      <%= form_with(model: @article, class: "shadow p-3 mb-3 bg-info rounded", data: {turbo: false}) do |f| %>
+        <div class="mb-3 row">
+          <%= f.label :name, class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+            <%= f.text_field :name, class: "form-control shadow rounded", placeholder: "Name of the team" %> <br/>
+          </div>
+        </div>
+        
+        <div class="mb-3 row">
+          <%= f.label :country, class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+            <%= f.text_field :country, class: "form-control shadow rounded", placeholder: "Country of the team" %> <br/>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <%= f.label :founded, class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+            <%= f.text_field :founded, class: "form-control shadow rounded", placeholder: "Year of establishment" %> <br/>
+          </div>
+        </div>   
+        
+        <div class="mb-3 row">
+          <%= f.label :description, class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+            <%= f.text_area :description, rows: 10, class: "form-control shadow rounded", placeholder: "Description of team" %> <br/>
+          </div>
+        </div>          
+    
+        <div class=" d-flex justify-content-center">
+          <%= f.submit class:"btn btn-outline-light btn-sm" %>
+        </div>
+      
+      <% end %>
+    </div>
+    <center><%= link_to '[ Cancel and Return to teams listing ]', teams_path, class: "text-info" %> </center>
+  </div>
+</div>
