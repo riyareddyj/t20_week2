@@ -16,5 +16,4 @@ class Player < ApplicationRecord
     validates_acceptance_of :is_captain, :allow_nil => true
 
     validates_acceptance_of :is_active, :allow_nil => true
-
 end
