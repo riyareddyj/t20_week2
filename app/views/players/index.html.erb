@@ -1,22 +1,29 @@
-<h1 class="text-center mt-4">Listing all players</h1>
+<br><center><h1>Listing all players</h1></center><br>
+<div class="search-filters">
 
-<div class="container">
-  <% @players.each do |player| %>
-    <div class="row justify-content-md-center">
-      <div class="col-8 mt-4">
-        <div class="card text-center shadow mb-5 bg-white rounded">
-          <div class="card-header fst-italic">
-            <%= player.name %>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title"> <%= player.position %> </h5>
-            <p class="card-text"> Age: <%= player.age %> </p>
-            <%= link_to "View", player_path(player), class: "btn btn-outline-success" %>
-            <%= link_to "Edit", edit_player_path(player), class: "btn btn-outline-info" %>
-            <%= link_to "Delete", player_path(player), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <form class="mb-5 mx-3">
+
+    <label>Team Name:</label>
+    <select name="team_id">
+      <option value="" disabled selected>Team</option>
+      <% Team.all.each do |team| %>
+        <option value="<%= team.id %>" ><%= team.name %></option>
+      <% end %>
+    </select>
+
+    <label>Player Name:</label>
+    <input type="text" name="player_name" />
+
+    <label>Age Range:</label>
+    <input type="number" name="min_age" placeholder="Min Age" />
+    <input type="number" name="max_age" placeholder="Max Age" />
+
+    <button type="submit" class="btn btn-primary">Search</button>
+
+    <button type="reset" class="btn btn-warning">Reset Filters</button>
+
+  </form>
+
 </div>
+
+<%= render "player" %>

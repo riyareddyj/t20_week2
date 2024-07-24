@@ -4,16 +4,19 @@ class Player < ApplicationRecord
     validates :name, presence: true
 
     validates :age, presence: true,
-                    numericality: { only_integer: true }
+                    numericality: { only_integer: true, greater_than: 0 }
 
 
     validates :position, presence: true
 
     validates :team_id, presence: true
 
+    enum role: { allrounder: 'allrounder', batsmen: 'batsmen', bowler: 'bowler' }
+
     validates :role, presence: true
 
-    validates_acceptance_of :is_captain, :allow_nil => true
+    validates :is_captain, inclusion: { in: [true, false] }
+    
+    validates :is_active, inclusion: { in: [true, false] }
 
-    validates_acceptance_of :is_active, :allow_nil => true
 end

@@ -1,20 +1,24 @@
-<h2 class="text-center mt-4"> <%= @player.name %> </h1>
+<h1 class="text-center mt-4"> <%= @player.name %> </h1>
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-8 mt-4">
       <div class="card text-center shadow mb-5 bg-white rounded">
-        <div class="card-header fst-italic">
-        <%= @player.name %>
+        <div class="card-header">
+          <b>Position: <%= @player.position %></b>
         </div>
         <div class="card-body">
-          <h5 class="card-title"> Position: <%= @player.position %> </h5>
-          <p class="card-text"> Founded in <%= @team.founded %> </p>
-          <p class="card-text"> <%= simple_format(@team.description) %> </p>
-          <%= link_to "View", team_path(@team), class: "btn btn-outline-success" %>
-          <%= link_to "Edit", edit_team_path(@team), class: "btn btn-outline-info" %>
-          <%= link_to "Delete", team_path(@team), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+          <h5 class="card-title"> Team_id: <%= @player.team_id %> </h5>
+          <p class="card-text"> Age: <%= @player.age %> </p>
+          <p class="card-text"> Role: <%= @player.role %> </p>
+          <p class="card-text"> Is Captain?: <%= @player.is_captain %> </p>
+          <p class="card-text"> Is Active?: <%= @player.is_active %> </p>
+          <p class="card-text"> <%= simple_format(@player.description) %> </p>
+          <%= link_to "Edit", edit_player_path(@player), class: "btn btn-outline-info" %>
+          <%= link_to "Delete", player_path(@player), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<center><%= link_to "Return to players page", players_path, class: "text-info" %></center>

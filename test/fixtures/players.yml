@@ -4,8 +4,18 @@ one:
   name: MyString
   age: 1
   position: MyString
+  team_id: 1
+  role: MyString
+  is_captain: false
+  is_active: false
+  description: MyText
 
 two:
   name: MyString
   age: 1
   position: MyString
+  team_id: 1
+  role: MyString
+  is_captain: false
+  is_active: false
+  description: MyText

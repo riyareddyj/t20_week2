@@ -1,0 +1,39 @@
+<div class="container">
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Position</th>
+        <th scope="col">Team_Id</th>
+        <th scope="col">Role</th>
+        <th scope="col">Is_Captain?</th>
+        <th scope="col">Is_Active?</th>
+        <th scope="col">Description</th>
+        <th scope="col">View player</th>
+        <th scope="col">Edit player</th>
+        <th scope="col">Delete player</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% @players.each do |player| %>
+      <tr>
+        <td><%= player.id %></td>
+        <td><%= player.name %></td>
+        <td><%= player.age %></td>
+        <td><%= player.position %></td>
+        <td><%= player.team_id %></td>
+        <td><%= player.role %></td>
+        <td><%= player.is_captain %></td>
+        <td><%= player.is_active %></td>
+        <td><%= player.description %></td>
+        <td><center><%= link_to "View", player_path(player), class: "btn btn-outline-success" %></center></td>
+        <td><center><%= link_to "Edit", edit_player_path(player), class: "btn btn-outline-info" %></center></td>
+        <td><center><%= link_to "Delete", player_path(player), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %></center></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

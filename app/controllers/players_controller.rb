@@ -1,54 +1,78 @@
 class PlayersController < ApplicationController
-    before_action :set_player, only: [:show, :edit, :update, :destroy] 
+  before_action :set_player, only: %i[ show edit update destroy ]
 
-    def show
+  # GET /players or /players.json
+  def index
+    @players = Player.all
+
+    if params[:team_id].present? || params[:player_name].present? || params[:min_age].present? || params[:max_age].present?
+      @players = @players.where(team_id: params[:team_id]) if params[:team_id].present?
+      @players = @players.where("name LIKE ?", "%#{params[:player_name]}%") if params[:player_name].present?
+      if params[:min_age].present? && params[:max_age].present?
+        @players = @players.where(age: params[:min_age].to_i..params[:max_age].to_i)
+      end
     end
-  
-    def index
-      @players = Player.all
-    end
-  
-    def new
-      @player = Player.new
-    end
-  
-    def edit
-    end
-  
-    def create
-      @player = Player.new(player_params)
+  end
+
+  # GET /players/1 or /players/1.json
+  def show
+  end
+
+  # GET /players/new
+  def new
+    @player = Player.new
+  end
+
+  # GET /players/1/edit
+  def edit
+  end
+
+  # POST /players or /players.json
+  def create
+    @player = Player.new(player_params)
+
+    respond_to do |format|
       if @player.save
-        flash[:notice] = "Player was created successfully"
-        redirect_to @player
+        format.html { redirect_to player_url(@player), notice: "Player was successfully created." }
+        format.json { render :show, status: :created, location: @player }
       else
-        render 'new'
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @player.errors, status: :unprocessable_entity }
       end
     end
-  
-    def update
+  end
+
+  # PATCH/PUT /players/1 or /players/1.json
+  def update
+    respond_to do |format|
       if @player.update(player_params)
-        flash[:notice] = "Player was updated successfully"
-        redirect_to @player
+        format.html { redirect_to player_url(@player), notice: "Player was successfully updated." }
+        format.json { render :show, status: :ok, location: @player }
       else
-        render 'edit'
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @player.errors, status: :unprocessable_entity }
       end
     end
-  
-    def destroy
-      @player.destroy
-      redirect_to players_path
+  end
+
+  # DELETE /players/1 or /players/1.json
+  def destroy
+    @player.destroy!
+
+    respond_to do |format|
+      format.html { redirect_to players_url, notice: "Player was successfully destroyed." }
+      format.json { head :no_content }
     end
-    
-    private 
-  
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
     def set_player
-      @player = Player.find(params[:id])        
+      @player = Player.find(params[:id])
     end
-  
+
+    # Only allow a list of trusted parameters through.
     def player_params
       params.require(:player).permit(:name, :age, :position, :team_id, :role, :is_captain, :is_active, :description)
     end
-  
-  end
-  
 end
