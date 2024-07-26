@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @maatch %>
+
+<div>
+  <%= link_to "Edit this maatch", edit_maatch_path(@maatch) %> |
+  <%= link_to "Back to maatches", maatches_path %>
+
+  <%= button_to "Destroy this maatch", @maatch, method: :delete %>
+</div>
