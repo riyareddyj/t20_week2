@@ -3,10 +3,10 @@ class Maatch < ApplicationRecord
   belongs_to :team2, class_name: 'Team'
 
   #validations
-  validates :date, presence: true, 
-                   uniqueness: true,
-
   validate :date_cannot_be_in_past
+
+  validates :date, presence: true, 
+                   uniqueness: true
 
   validates :location, presence: true
 
@@ -19,7 +19,7 @@ class Maatch < ApplicationRecord
 
   #scopes
   scope :upcoming, ->(date) { where("date > ?", date)}
-  scope :by_team, ->(team_id) { where(home_team_id: team_id || away_team_id: team_id)}
+  scope :by_team, ->(id) { where("home_team_id = ? || away_team_id: ?", id,id)}
   scope :date_range, ->(date1, date2) { where(date: date1..date2)}
 
   #callbacks
@@ -28,8 +28,8 @@ class Maatch < ApplicationRecord
     puts "Match created successfully"
   end
 
-  private
-
+  private 
+  
   def date_cannot_be_in_past
     if date < Date.today
       errors[:date] = "Date can't be in past"
