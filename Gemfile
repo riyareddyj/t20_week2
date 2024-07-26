@@ -72,3 +72,6 @@ end
 gem "jquery-rails"
 gem "bootstrap"
 gem "sassc-rails"
+
+gem 'devise'
+gem 'pundit'

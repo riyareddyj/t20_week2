@@ -6,3 +6,24 @@ import "jquery"
 import "jquery_ujs"
 import "popper"
 import "bootstrap"
+
+document.addEventListener("turbolinks:load", initializeForm);
+document.addEventListener("DOMContentLoaded", initializeForm);
+
+function initializeForm() {
+  console.log("Hello world");
+  document.addEventListener('click', (event) => {
+    if (event.target.matches('.remove_fields')) {
+      event.preventDefault();
+      event.target.closest('.nested-fields').remove();
+    }
+
+    if (event.target.matches('.add_fields')) {
+      event.preventDefault();
+      let time = new Date().getTime();
+      let regexp = new RegExp(event.target.dataset.id, 'g');
+      let newFields = event.target.dataset.fields.replace(regexp, time);
+      document.querySelector('.nested-fields').insertAdjacentHTML('beforeend', newFields);
+    }
+  });
+}

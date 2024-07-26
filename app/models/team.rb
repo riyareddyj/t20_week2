@@ -1,8 +1,10 @@
 class Team < ApplicationRecord
     has_many :players, dependent: :destroy
-    has_many :home_matches, class_name: 'Mastch', foreign_key: 'home_team_id'
+    has_many :home_matches, class_name: 'Maatch', foreign_key: 'home_team_id'
     has_many :away_matches, class_name: 'Maatch', foreign_key: 'away_team_id'
 
+    accepts_nested_attributes_for :players, allow_destroy: true  
+    
     #validations
     validates :name, presence: true, 
                      uniqueness: true

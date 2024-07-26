@@ -30,9 +30,67 @@
             <%= f.text_area :description, rows: 10, class: "form-control shadow rounded", placeholder: "Description of team" %> <br/>
           </div>
         </div>          
-    
-        <div class=" d-flex justify-content-center">
-          <%= f.submit class:"btn btn-outline-light btn-sm" %>
+  
+        <h3>Players</h3>
+        <%= f.fields_for :players do |player_form| %>
+          <div class="nested-fields">
+            <div class="field mb-3 row">
+              <%= player_form.label :name, class: "col-2 col-form-label text-light" %>
+              <div class="col-10">
+                <%= player_form.text_field :name, class: "form-control shadow rounded" %>
+              </div>
+            </div>
+          
+            <div class="field mb-3 row">
+              <%= player_form.label :age, class: "col-2 col-form-label text-light" %>
+              <div class="col-10">
+                <%= player_form.number_field :age, class: "form-control shadow rounded" %>
+              </div>
+            </div>
+
+            <div class="field mb-3 row">
+              <%= player_form.label :position, class: "col-2 col-form-label text-light" %>
+              <div class="col-10">
+                <%= player_form.text_field :position, class: "form-control shadow rounded" %>
+              </div>
+            </div>
+
+            <div class="field mb-3 row">
+              <%= player_form.label :role, class: "col-2 col-form-label text-light" %>
+              <div class="col-10">
+                <%= player_form.text_field :role, class: "form-control shadow rounded" %>
+              </div>
+            </div>
+
+            <div class="field">
+              <%= player_form.label :is_captain, class: "col-form-label text-light" %>
+              <%= player_form.check_box :is_captain %>
+            </div>
+
+            <div class="field mb-3">
+              <%= player_form.label :is_active, class: "col-form-label text-light" %>
+              <%= player_form.check_box :is_active %>
+            </div>
+
+            <div class="field mb-3 row">
+              <%= player_form.label :description, class: "col-2 col-form-label text-light" %>
+              <div class="col-10">
+                <%= player_form.text_area :description, rows: 5, class: "form-control shadow rounded", placeholder: "Description of player" %>
+              </div>
+            </div>
+
+            <div class="actions d-flex justify-content-center mb-2">
+              <%= link_to 'Remove Player', '#', class: 'remove_fields btn btn-outline-light btn-sm btn-danger' %>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="actions d-flex justify-content-center mb-3">
+          <%= link_to_add_fields 'Add Player', f, :players %>
+        </div>        
+
+        <div class="actions d-flex justify-content-center">
+          <%= f.submit class:"btn btn-outline-light btn-lg btn-warning" %>
         </div>
       
       <% end %>

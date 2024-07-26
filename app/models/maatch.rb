@@ -1,6 +1,6 @@
 class Maatch < ApplicationRecord
-  belongs_to :team1, class_name: 'Team'
-  belongs_to :team2, class_name: 'Team'
+  belongs_to :home_team, class_name: 'Team'
+  belongs_to :away_team, class_name: 'Team'
 
   #validations
   validate :date_cannot_be_in_past

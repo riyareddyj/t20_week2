@@ -1,1 +1,7 @@
 <center><h1> WELCOME TO THE CRICKET WORLD! </h1><center>
+<% if user_signed_in? %> 
+ <div> Welcome <%= current_user.email %> </div> 
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-lg btn-outline-light btn-primary" %> 
+<% else %>
+  <%= button_to "Sign in", new_user_session_path, class: "btn btn-lg btn-outline-light btn-primary" %> 
+<% end %>

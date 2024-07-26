@@ -1,5 +1,6 @@
 class MaatchesController < ApplicationController
   before_action :set_maatch, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /maatches or /maatches.json
   def index

@@ -1,0 +1,39 @@
+<div class="nested-fields">
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :position %>
+    <%= f.text_field :position %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :role %>
+    <%= f.text_field :role %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :is_captain %>
+    <%= f.check_box :is_captain %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :is_active %>
+    <%= f.check_box :is_active %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <%= link_to 'Remove Player', '#', class: 'remove_fields' %>
+</div>
+
